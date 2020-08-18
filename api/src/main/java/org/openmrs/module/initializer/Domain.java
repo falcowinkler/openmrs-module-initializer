@@ -27,7 +27,8 @@ public enum Domain {
 	DATAFILTER_MAPPINGS(23, "datafiltermappings"),
 	METADATA_SETS(24, "metadatasets"),
 	METADATA_SET_MEMBERS(25, "metadatasetmembers"),
-	METADATA_TERM_MAPPINGS(26, "metadatatermmappings");
+	METADATA_TERM_MAPPINGS(26, "metadatatermmappings"),
+	CONCEPT_SOURCES(27, "conceptsources");
 	
 	private final int order;
 	

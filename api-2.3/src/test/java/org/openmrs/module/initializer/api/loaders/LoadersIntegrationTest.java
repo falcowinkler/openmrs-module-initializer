@@ -21,6 +21,7 @@ import org.openmrs.module.initializer.api.appt.specialities.AppointmentsSpeciali
 import org.openmrs.module.initializer.api.attributes.types.AttributeTypesLoader;
 import org.openmrs.module.initializer.api.c.ConceptsLoader;
 import org.openmrs.module.initializer.api.c.ConceptClassesLoader;
+import org.openmrs.module.initializer.api.conceptsources.ConceptSourcesLoader;
 import org.openmrs.module.initializer.api.datafilter.mappings.DataFilterMappingsLoader;
 import org.openmrs.module.initializer.api.drugs.DrugsLoader;
 import org.openmrs.module.initializer.api.et.EncounterTypesLoader;
@@ -123,6 +124,9 @@ public class LoadersIntegrationTest extends DomainBaseModuleContextSensitiveTest
 	
 	@Autowired
 	private MetadataSetMembersLoader metadataSetMemberLoader;
+	
+	@Autowired
+	private ConceptSourcesLoader conceptsSourcesLoader;
 	
 	@Override
 	public void updateSearchIndex() {
@@ -264,6 +268,11 @@ public class LoadersIntegrationTest extends DomainBaseModuleContextSensitiveTest
 		
 		previousLoader = loader;
 		loader = metadataTermMappingsLoader;
+		count++;
+		Assert.assertThat(loader.getOrder(), greaterThan(previousLoader.getOrder()));
+		
+		previousLoader = loader;
+		loader = conceptsSourcesLoader;
 		count++;
 		Assert.assertThat(loader.getOrder(), greaterThan(previousLoader.getOrder()));
 		
